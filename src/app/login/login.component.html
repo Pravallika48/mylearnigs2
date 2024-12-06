@@ -1,0 +1,21 @@
+<div class="holder">
+    <div class="left">
+        <div class="header">
+            <span>Login</span>
+        </div>
+        <form [formGroup]="loginForm" class="container"  (ngSubmit)="onSubmission()">
+
+            <input type="text" id="username" placeholder="Username" formControlName="username">
+            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+                <span *ngIf="loginForm.get('username')?.errors?.['required']">Please enter your username</span>
+                <span *ngIf="loginForm.get('username')?.errors?.['pattern']">Username must contain only alphabets</span>
+            </div>
+
+            <input type="password" name="pswd" id="pswd" placeholder="Password" formControlName="password">
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                <span *ngIf="loginForm.get('password')?.errors?.['required']">Please enter your Password</span>
+            </div>
+            <button type="submit" >LOGIN</button>
+        </form>
+    </div>
+</div>
